@@ -88,9 +88,26 @@ def predict():
     X_test = cv.fit_transform(X_tst).toarray()
     inc_name = testdataset.iloc[:, 0].values
     
-        
+    
     # Predicting the Test set results
     y_pred = model.predict(X_test)
+    
+    finalstr = ''
+    for i in range(0, len(y_pred)):
+        if y_pred[i]==0:
+             finalstr = finalstr + inc_name[i] + '=======>' + 'Application \n'
+        elif y_pred[i]==1:
+             finalstr = finalstr + inc_name[i] + '=======>' 'Payment \n'
+        elif y_pred[i]==2:
+             finalstr = finalstr + inc_name[i] + '=======>' 'Cofc \n'
+        elif y_pred[i]==3:
+             finalstr = finalstr + inc_name[i] + '=======>' 'Perf Cal \n'
+        elif y_pred[i]==4:
+             finalstr = finalstr + inc_name[i] + '=======>' 'Bancs \n'
+        elif y_pred[i]==5:
+             finalstr = finalstr + inc_name[i] + '=======>' 'Arrears \n'
+        else:
+             finalstr = finalstr + inc_name[i] + '=======>' 'Enforcement \n'
     
     # def convert_to_name(x):
     #     word_dict = {0:'Application', 1:'Payment', 2:'Cofc', 3:'Perf Cal', 4:'Bancs', 5:'Arrears', 6:'Enforcement'}
@@ -102,7 +119,7 @@ def predict():
     # from sklearn.metrics import confusion_matrix
     # cm = confusion_matrix(y_test, y_pred)
     print(type(inc_name))
-    return render_template('index.html', prediction_text='Attached file value $ {}'.format(inc_name))
+    return render_template('index.html', prediction_text='Attached file value $ {}'.format(finalstr))
 
 
 if __name__ == "__main__":
