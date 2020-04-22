@@ -13,14 +13,12 @@
 
 <body>
  <div class="login">
-	<h1>Predict Salary Analysis</h1>
+	<h1>Predict Incident Category</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="experience" placeholder="Experience" required="required" />
-        <input type="text" name="test_score" placeholder="Test Score" required="required" />
-		<input type="text" name="interview_score" placeholder="Interview Score" required="required" />
-
+    <form enctype = "multipart/form-data" action="{{ url_for('predict')}}"method="post">
+    	<label for="myfile">Upload Incident Description File:</label>
+        <p>File: <input type="file" id="testfile" name="testfile" required="required"></p>
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
 
@@ -29,7 +27,56 @@
    {{ prediction_text }}
 
  </div>
+ 
+ 
+ <!--
+To upload a file, the HTML form must have the enctype attribute set to multipart/form-data. The input tag with the file type creates a "Browse" button.
+
+<html>
+<body>
+   <form enctype = "multipart/form-data"
+                     action = "save_file.py" method = "post">
+   <p>File: <input type = "file" name = "filename" /></p>
+   <p><input type = "submit" value = "Upload" /></p>
+   </form>
+</body>
+</html>
+The result of this code is the following form −
+
+File: Choose file
+Upload
+Here is the script save_file.py to handle file upload −
+
+#!/usr/bin/python
+import cgi, os
+import cgitb; cgitb.enable()
+form = cgi.FieldStorage()
+# Get filename here.
+fileitem = form['filename']
+# Test if the file was uploaded
+if fileitem.filename:
+   # strip leading path from file name to avoid
+   # directory traversal attacks
+   fn = os.path.basename(fileitem.filename)
+   open('/tmp/' + fn, 'wb').write(fileitem.file.read())
+   message = 'The file "' + fn + '" was uploaded successfully'
+  
+else:
+   message = 'No file was uploaded'
+  
+print """\
+Content-Type: text/html\n
+<html>
+<body>
+   <p>%s</p>
+</body>
+</html>
+""" % (message,)
+If you run the above script on Unix/Linux, then you need to take care of replacing file separator as follows, otherwise on your windows machine above open() statement should work fine.
+
+fn = os.path.basename(fileitem.filename.replace("\\", "/" ))
 
 
 </body>
 </html>
+-->
