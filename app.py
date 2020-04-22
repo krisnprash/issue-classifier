@@ -94,6 +94,7 @@ def predict():
     finalstr = ''
     for i in range(0, len(y_pred)):
         print('SummaryI->',testdataset['Summary'][i])
+	print('y_pred->',y_pred[i])
         if y_pred[i]==0:
              finalstr = finalstr + testdataset['Summary'][i] + '=======>' + 'Application \n'
         elif y_pred[i]==1:
