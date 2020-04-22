@@ -51,8 +51,7 @@ def predict():
             #testfileData = io.BytesIO(request.get_data())
             #testfileData = request.get_data()  #This returned only b' 
             #testfileData = testfile.read()    #this returned binary version of file
-            #print(':',testfile.stream.read()) # this returned only b'
-            
+            #print(':',testfile.stream.read()) # this returned only b'            
     except Exception as e:
         print('EXCEPTION:', str(e))
         return 'Error processing file', 500
@@ -94,6 +93,7 @@ def predict():
     
     finalstr = ''
     for i in range(0, len(y_pred)):
+        print('SummaryI->',testdataset['Summary'][i])
         if y_pred[i]==0:
              finalstr = finalstr + testdataset['Summary'][i] + '=======>' + 'Application \n'
         elif y_pred[i]==1:
