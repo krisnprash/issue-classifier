@@ -86,7 +86,7 @@ def predict():
     #cv = CountVectorizer(max_features = xtstLen) if 26 >= xtstLen else CountVectorizer(max_features = 26)
     cv = CountVectorizer(max_features = 26)
     X_test = cv.fit_transform(X_tst).toarray()
-    inc_name = testdataset.iloc[:, 0].values
+    #inc_name = testdataset.iloc[:, 0].values
     
     
     # Predicting the Test set results
@@ -95,19 +95,19 @@ def predict():
     finalstr = ''
     for i in range(0, len(y_pred)):
         if y_pred[i]==0:
-             finalstr = finalstr + inc_name[i] + '=======>' + 'Application \n'
+             finalstr = finalstr + testdataset['Summary'][i] + '=======>' + 'Application \n'
         elif y_pred[i]==1:
-             finalstr = finalstr + inc_name[i] + '=======>' 'Payment \n'
+             finalstr = finalstr + testdataset['Summary'][i] + '=======>' 'Payment \n'
         elif y_pred[i]==2:
-             finalstr = finalstr + inc_name[i] + '=======>' 'Cofc \n'
+             finalstr = finalstr + testdataset['Summary'][i] + '=======>' 'Cofc \n'
         elif y_pred[i]==3:
-             finalstr = finalstr + inc_name[i] + '=======>' 'Perf Cal \n'
+             finalstr = finalstr + testdataset['Summary'][i] + '=======>' 'Perf Cal \n'
         elif y_pred[i]==4:
-             finalstr = finalstr + inc_name[i] + '=======>' 'Bancs \n'
+             finalstr = finalstr + testdataset['Summary'][i] + '=======>' 'Bancs \n'
         elif y_pred[i]==5:
-             finalstr = finalstr + inc_name[i] + '=======>' 'Arrears \n'
+             finalstr = finalstr + testdataset['Summary'][i] + '=======>' 'Arrears \n'
         else:
-             finalstr = finalstr + inc_name[i] + '=======>' 'Enforcement \n'
+             finalstr = finalstr + testdataset['Summary'][i] + '=======>' 'Enforcement \n'
     
     # def convert_to_name(x):
     #     word_dict = {0:'Application', 1:'Payment', 2:'Cofc', 3:'Perf Cal', 4:'Bancs', 5:'Arrears', 6:'Enforcement'}
@@ -118,12 +118,9 @@ def predict():
     # Making the Confusion Matrix
     # from sklearn.metrics import confusion_matrix
     # cm = confusion_matrix(y_test, y_pred)
-    print(type(inc_name))
+    
     return render_template('index.html', prediction_text='Attached file value $ {}'.format(finalstr))
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
