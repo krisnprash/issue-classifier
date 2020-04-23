@@ -91,22 +91,22 @@ def predict():
     
     finalstr = ''
     for i in range(0, len(testdataset)):
-        print('SummaryI->',testdataset['Incident'][i])
+        print('Incident->',testdataset['Incident'][i])
         print('y_pred->',y_pred[i])
         if y_pred[i]==0:
-             finalstr = finalstr + testdataset['Summary'][i] + '=======> Application' + '\n'
+             finalstr = finalstr + testdataset['Incident'][i] + '=======> Application' + '\n'
         elif y_pred[i]==1:
-             finalstr = finalstr + testdataset['Summary'][i] + '=======> Payment' + '\n'
+             finalstr = finalstr + testdataset['Incident'][i] + '=======> Payment' + '\n'
         elif y_pred[i]==2:
-             finalstr = finalstr + testdataset['Summary'][i] + '=======> Cofc' + '\n'
+             finalstr = finalstr + testdataset['Incident'][i] + '=======> Cofc' + '\n'
         elif y_pred[i]==3:
-             finalstr = finalstr + testdataset['Summary'][i] + '=======> Perf Cal' + '\n'
+             finalstr = finalstr + testdataset['Incident'][i] + '=======> Perf Cal' + '\n'
         elif y_pred[i]==4:
-             finalstr = finalstr + testdataset['Summary'][i] + '=======> Bancs' + '\n'
+             finalstr = finalstr + testdataset['Incident'][i] + '=======> Bancs' + '\n'
         elif y_pred[i]==5:
-             finalstr = finalstr + testdataset['Summary'][i] + '=======> Arrears' + '\n'
+             finalstr = finalstr + testdataset['Incident'][i] + '=======> Arrears' + '\n'
         else:
-             finalstr = finalstr + testdataset['Summary'][i] + '=======> Enforcement' + '\n'
+             finalstr = finalstr + testdataset['Incident'][i] + '=======> Enforcement' + '\n'
     
     # def convert_to_name(x):
     #     word_dict = {0:'Application', 1:'Payment', 2:'Cofc', 3:'Perf Cal', 4:'Bancs', 5:'Arrears', 6:'Enforcement'}
