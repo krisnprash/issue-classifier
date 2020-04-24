@@ -8,7 +8,11 @@
 <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-  
+  <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+</style>
 </head>
 
 <body>
@@ -24,8 +28,19 @@
 
    <br>
    <br>
-   <p style="color:blue;font-size:20;text-align: center;"><b>Incidents Classification</b></p>
-   <h2 style="color:red;">{{ prediction_text }}</h2>
+   <!-- <p style="color:red;font-size:20;text-align: center;"><b>Incidents Classification</b></p> -->
+   <table style="width:100%">
+     <th>Incident Classification</th>
+      
+      {% for item in prediction_list %}
+       <tr>
+            <td>h2 style="color:blue;">{{ item }}</h2></td>
+       </tr>
+      {% endfor %}    
+      
+   </table>
+   
+   
 
  </div>
  
