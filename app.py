@@ -58,6 +58,7 @@ def predict():
     X_tst = []
     sTst = set()
     for i in range(0, len(testdataset)):
+	print('values::',testdataset['Description'][i])
         if(testdataset['Description'][i]==9149):
             testdataset['Description'][i] = str(9149)
         testdesc = testdataset['Description'][i].lower()
